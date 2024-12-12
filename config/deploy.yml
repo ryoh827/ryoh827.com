@@ -7,7 +7,7 @@ image: ryoh827/ryoh827_com
 # Deploy to these servers.
 servers:
   web:
-    - 60.251.180.118
+    - 160.251.180.118
   # job:
   #   hosts:
   #     - 192.168.0.1
