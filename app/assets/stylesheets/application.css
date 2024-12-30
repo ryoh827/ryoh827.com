@@ -97,7 +97,6 @@ a:visited {
   padding: 0.125rem 0.5rem;
   margin: 0;
   background-color: var(--green);
-
   border: var(--border);
   box-shadow: var(--shadow);
 }
@@ -105,6 +104,10 @@ a:visited {
 .nav > a:link,
 .nav > a:visited {
   color: var(--brown-dark);
+}
+
+.counter {
+  text-align: center;
 }
 
 @media screen and (min-width: 820px) {
