@@ -1,24 +1,30 @@
-# README
+# ryoh827.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+React + Vite + TypeScript implementation of the `ryoh827.com` top page.
 
-Things you may want to cover:
+The React app is already in the repository root. The temporary `frontend/` phase from the migration plan has been completed.
 
-* Ruby version
+## Development
 
-* System dependencies
+```bash
+npm install
+npm run dev
+```
 
-* Configuration
+## Quality checks
 
-* Database creation
+```bash
+npm run typecheck
+npm run lint
+npm run test
+npm run build
+```
 
-* Database initialization
+## Cutover Checklist
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Run all quality checks locally and confirm success.
+2. Deploy the `dist/` output to the production static hosting target.
+3. Verify `https://ryoh827.com/` renders the React page.
+4. Verify Scrapbox, GitHub, and X links.
+5. Verify the visitor counter image loads.
+6. Verify layout at key widths (820px, 625px, 510px, 420px, 350px).
