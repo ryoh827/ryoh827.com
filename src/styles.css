@@ -1,12 +1,15 @@
 :root {
-  --pixel-bg: #f0f6ff;
-  --pixel-fg: #1a365d;
-  --pixel-accent: #2563eb;
-  --pixel-border: #3b82f6;
-  --pixel-hover: #dbeafe;
-  --pixel-shadow: #1e40af;
-  --pixel-window-bg: #ffffff;
-  --pixel-button-bg: #eff6ff;
+  --pixel-bg: #0d0b1a;
+  --pixel-fg: #f0d6e8;
+  --pixel-accent: #ff4da6;
+  --pixel-accent-secondary: #00d4ff;
+  --pixel-border: #ff4da6;
+  --pixel-hover: rgba(255, 77, 166, 0.2);
+  --pixel-shadow: #cc3d85;
+  --pixel-window-bg: rgba(20, 15, 40, 0.9);
+  --pixel-button-bg: rgba(255, 77, 166, 0.1);
+  --pixel-glow-pink: 0 0 10px rgba(255, 77, 166, 0.5), 0 0 20px rgba(255, 77, 166, 0.3);
+  --pixel-glow-cyan: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
   --pixel-font-mono: 'VT323', 'Courier New', monospace;
   --pixel-font-display: 'Press Start 2P', 'Courier New', monospace;
 }
@@ -44,9 +47,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(255, 77, 166, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.07) 1px, transparent 1px);
   background-size: 20px 20px;
   pointer-events: none;
   z-index: -1;
@@ -58,11 +61,12 @@ body {
 }
 
 .pixel-nameplate {
-  border: 2px solid var(--pixel-border);
+  border: 2px solid var(--pixel-accent);
   background-color: var(--pixel-window-bg);
   padding: 2rem;
   display: inline-block;
   position: relative;
+  box-shadow: var(--pixel-glow-pink);
 }
 
 .pixel-nameplate::before {
@@ -72,23 +76,24 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: var(--pixel-accent);
+  background: linear-gradient(135deg, var(--pixel-accent), var(--pixel-accent-secondary));
   z-index: -1;
 }
 
 .pixel-name {
   font-family: var(--pixel-font-display);
   font-size: 2.5rem;
-  color: var(--pixel-fg);
+  color: var(--pixel-accent);
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 0px var(--pixel-shadow);
+  text-shadow: 0 0 10px rgba(255, 77, 166, 0.8), 0 0 20px rgba(255, 77, 166, 0.4), 2px 2px 0px var(--pixel-shadow);
 }
 
 .pixel-subtitle {
   font-family: var(--pixel-font-mono);
   font-size: 1.2rem;
-  color: var(--pixel-accent);
+  color: var(--pixel-accent-secondary);
   letter-spacing: 0.1em;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
 }
 
 .pixel-main {
@@ -99,9 +104,10 @@ body {
 }
 
 .pixel-menu {
-  border: 2px solid var(--pixel-border);
+  border: 2px solid var(--pixel-accent-secondary);
   background-color: var(--pixel-window-bg);
   padding: 2rem;
+  box-shadow: var(--pixel-glow-cyan);
 }
 
 .pixel-menu-title {
@@ -110,6 +116,7 @@ body {
   color: var(--pixel-accent);
   margin-bottom: 1.5rem;
   text-align: center;
+  text-shadow: 0 0 8px rgba(255, 77, 166, 0.6);
 }
 
 .pixel-nav {
@@ -123,20 +130,21 @@ body {
   align-items: center;
   padding: 1rem;
   background-color: var(--pixel-button-bg);
-  border: 2px solid var(--pixel-border);
+  border: 2px solid var(--pixel-accent);
   color: var(--pixel-fg);
   text-decoration: none;
   font-family: var(--pixel-font-mono);
   font-size: 1.1rem;
-  transition: all 0.1s;
+  transition: all 0.2s;
   position: relative;
 }
 
 .pixel-button:hover {
   background-color: var(--pixel-hover);
-  border-color: var(--pixel-accent);
+  border-color: var(--pixel-accent-secondary);
   transform: translate(-2px, -2px);
-  box-shadow: 2px 2px 0px var(--pixel-shadow);
+  box-shadow: var(--pixel-glow-cyan), 2px 2px 0px var(--pixel-shadow);
+  color: var(--pixel-accent-secondary);
 }
 
 .pixel-button:active {
@@ -159,14 +167,15 @@ body {
 }
 
 .pixel-window {
-  border: 2px solid var(--pixel-border);
+  border: 2px solid var(--pixel-accent-secondary);
   background-color: var(--pixel-window-bg);
   min-height: 300px;
+  box-shadow: var(--pixel-glow-cyan);
 }
 
 .pixel-window-header {
-  background-color: var(--pixel-button-bg);
-  border-bottom: 2px solid var(--pixel-border);
+  background-color: rgba(0, 212, 255, 0.1);
+  border-bottom: 2px solid var(--pixel-accent-secondary);
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -176,7 +185,8 @@ body {
 .pixel-window-title {
   font-family: var(--pixel-font-display);
   font-size: 0.75rem;
-  color: var(--pixel-accent);
+  color: var(--pixel-accent-secondary);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
 }
 
 .pixel-window-buttons {
@@ -197,10 +207,10 @@ body {
 }
 
 .pixel-placeholder {
-  border: 1px dashed var(--pixel-border);
+  border: 1px dashed var(--pixel-accent);
   padding: 2rem;
   text-align: center;
-  background-color: rgba(59, 130, 246, 0.05);
+  background-color: rgba(255, 77, 166, 0.05);
 }
 
 .pixel-blink {
@@ -223,8 +233,9 @@ body {
 .pixel-footer-bar {
   width: 100%;
   height: 2px;
-  background-color: var(--pixel-border);
+  background: linear-gradient(90deg, var(--pixel-accent), var(--pixel-accent-secondary));
   margin-bottom: 1.5rem;
+  box-shadow: 0 0 8px rgba(255, 77, 166, 0.4);
 }
 
 .pixel-counter {
@@ -233,15 +244,17 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid var(--pixel-border);
+  border: 1px solid var(--pixel-accent);
   background-color: var(--pixel-window-bg);
   display: inline-flex;
+  box-shadow: var(--pixel-glow-pink);
 }
 
 .pixel-counter-label {
   font-family: var(--pixel-font-mono);
   font-size: 1rem;
   color: var(--pixel-accent);
+  text-shadow: 0 0 8px rgba(255, 77, 166, 0.6);
 }
 
 .pixel-counter img {
