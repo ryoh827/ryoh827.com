@@ -1,14 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  --pixel-bg: #f0f6ff;
-  --pixel-fg: #1a365d;
-  --pixel-accent: #2563eb;
-  --pixel-border: #3b82f6;
-  --pixel-hover: #dbeafe;
-  --pixel-shadow: #1e40af;
+  --pixel-bg: #f8f0f5;
+  --pixel-fg: #1a1a2e;
+  --pixel-accent: #e91e8c;
+  --pixel-accent-secondary: #0ea5c9;
+  --pixel-navy: #1a1a2e;
+  --pixel-border: #e0c4d4;
+  --pixel-hover: rgba(233, 30, 140, 0.08);
+  --pixel-shadow: #cc3d85;
   --pixel-window-bg: #ffffff;
-  --pixel-button-bg: #eff6ff;
-  --pixel-font-mono: 'VT323', 'Courier New', monospace;
-  --pixel-font-display: 'Press Start 2P', 'Courier New', monospace;
+  --pixel-button-bg: #faf5f8;
+  --pixel-glow-pink: 0 0 10px rgba(233, 30, 140, 0.15);
+  --pixel-glow-cyan: 0 0 10px rgba(14, 165, 201, 0.15);
+  --pixel-font-mono: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --pixel-font-display: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 * {
@@ -21,11 +27,10 @@ body {
   font-family: var(--pixel-font-mono);
   background-color: var(--pixel-bg);
   color: var(--pixel-fg);
-  line-height: 1.4;
+  line-height: 1.6;
   font-size: 16px;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .pixel-container {
@@ -44,9 +49,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-image: none;
   background-size: 20px 20px;
   pointer-events: none;
   z-index: -1;
@@ -58,37 +61,34 @@ body {
 }
 
 .pixel-nameplate {
-  border: 2px solid var(--pixel-border);
+  border: 1px solid var(--pixel-border);
   background-color: var(--pixel-window-bg);
-  padding: 2rem;
+  padding: 2rem 3rem;
   display: inline-block;
   position: relative;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(26, 26, 46, 0.08);
+  border-bottom: 3px solid var(--pixel-navy);
 }
 
 .pixel-nameplate::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: var(--pixel-accent);
-  z-index: -1;
+  display: none;
 }
 
 .pixel-name {
   font-family: var(--pixel-font-display);
   font-size: 2.5rem;
-  color: var(--pixel-fg);
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 0px var(--pixel-shadow);
+  font-weight: 700;
+  color: var(--pixel-navy);
+  margin-bottom: 0.5rem;
 }
 
 .pixel-subtitle {
   font-family: var(--pixel-font-mono);
   font-size: 1.2rem;
-  color: var(--pixel-accent);
+  color: var(--pixel-accent-secondary);
   letter-spacing: 0.1em;
+  opacity: 0.9;
 }
 
 .pixel-main {
@@ -99,17 +99,22 @@ body {
 }
 
 .pixel-menu {
-  border: 2px solid var(--pixel-border);
+  border: 1px solid var(--pixel-border);
   background-color: var(--pixel-window-bg);
   padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(14, 165, 201, 0.08);
 }
 
 .pixel-menu-title {
   font-family: var(--pixel-font-display);
-  font-size: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--pixel-accent);
   margin-bottom: 1.5rem;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
 }
 
 .pixel-nav {
@@ -123,20 +128,22 @@ body {
   align-items: center;
   padding: 1rem;
   background-color: var(--pixel-button-bg);
-  border: 2px solid var(--pixel-border);
+  border: 1px solid var(--pixel-border);
   color: var(--pixel-fg);
   text-decoration: none;
   font-family: var(--pixel-font-mono);
-  font-size: 1.1rem;
-  transition: all 0.1s;
+  font-size: 1rem;
+  transition: all 0.2s;
   position: relative;
+  border-radius: 8px;
 }
 
 .pixel-button:hover {
   background-color: var(--pixel-hover);
   border-color: var(--pixel-accent);
-  transform: translate(-2px, -2px);
-  box-shadow: 2px 2px 0px var(--pixel-shadow);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(233, 30, 140, 0.15);
+  color: var(--pixel-accent);
 }
 
 .pixel-button:active {
@@ -159,14 +166,17 @@ body {
 }
 
 .pixel-window {
-  border: 2px solid var(--pixel-border);
+  border: 1px solid var(--pixel-border);
   background-color: var(--pixel-window-bg);
   min-height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(14, 165, 201, 0.08);
+  overflow: hidden;
 }
 
 .pixel-window-header {
-  background-color: var(--pixel-button-bg);
-  border-bottom: 2px solid var(--pixel-border);
+  background-color: rgba(14, 165, 201, 0.05);
+  border-bottom: 1px solid var(--pixel-border);
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -176,7 +186,10 @@ body {
 .pixel-window-title {
   font-family: var(--pixel-font-display);
   font-size: 0.75rem;
-  color: var(--pixel-accent);
+  font-weight: 600;
+  color: var(--pixel-accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .pixel-window-buttons {
@@ -200,14 +213,16 @@ body {
   border: 1px dashed var(--pixel-border);
   padding: 2rem;
   text-align: center;
-  background-color: rgba(59, 130, 246, 0.05);
+  background-color: rgba(233, 30, 140, 0.03);
+  border-radius: 8px;
 }
 
 .pixel-blink {
   font-family: var(--pixel-font-display);
   font-size: 0.875rem;
+  font-weight: 500;
   color: var(--pixel-accent);
-  animation: blink 1s infinite;
+  animation: blink 1.5s ease-in-out infinite;
 }
 
 @keyframes blink {
@@ -223,7 +238,7 @@ body {
 .pixel-footer-bar {
   width: 100%;
   height: 2px;
-  background-color: var(--pixel-border);
+  background: linear-gradient(90deg, var(--pixel-navy), var(--pixel-accent), var(--pixel-accent-secondary));
   margin-bottom: 1.5rem;
 }
 
@@ -236,6 +251,7 @@ body {
   border: 1px solid var(--pixel-border);
   background-color: var(--pixel-window-bg);
   display: inline-flex;
+  border-radius: 8px;
 }
 
 .pixel-counter-label {
@@ -247,9 +263,6 @@ body {
 .pixel-counter img {
   max-width: 100%;
   height: auto;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
 }
 
 @media (max-width: 768px) {
@@ -298,14 +311,4 @@ body {
     flex-direction: column;
     gap: 0.5rem;
   }
-}
-
-@font-face {
-  font-family: "Press Start 2P";
-  src: url("/fonts/PressStart2P.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "VT323";
-  src: url("/fonts/VT323-Regular.ttf") format("truetype");
 }
